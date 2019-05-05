@@ -25,6 +25,7 @@ workshop_color = [color, np.array([0.7 * 255, 0.7 * 103, 0, 255], dtype=np.float
 event_color = [color, np.array([0, 134, 108, 255], dtype=np.float32) / 255]
 project_color = [color, np.array([255, 103, 0, 255], dtype=np.float32) / 255]
 studentorg_color = [color, np.array([100, 8, 23, 255], dtype=np.float32) / 255]
+community_color = [color, np.array([152, 41, 160, 255], dtype=np.float32) / 255]
 
 company_color = [color, np.array([216, 155, 0, 255], dtype=np.float32) / 255]
 
@@ -61,6 +62,11 @@ v_ieee_tech = new_vertex(g, [[name, "IEEE Tech"], studentorg_color])
 v_ece_students = new_vertex(g, [[name, "ECE Students"], studentorg_color])
 v_ieee_pvamu = new_vertex(g, [[name, "IEEE PV A&M"], studentorg_color])
 v_ieee_uhcl = new_vertex(g, [[name, "IEEE UHCL"], studentorg_color])
+
+v_middle_schools = new_vertex(g, [[name, "Middle Schools"], community_color])
+v_high_schools = new_vertex(g, [[name, "High Schools"], community_color])
+v_community = new_vertex(g, [[name, "Community"], community_color])
+
 
 v_pi_workshop = new_vertex(g, [[name, "Pi Workshop"], workshop_color])
 v_jetbot_workshop = new_vertex(g, [[name, "Jetbot Workshop"], workshop_color])
@@ -120,6 +126,9 @@ g.add_edge(v_ieee_engi, v_ece)
 g.add_edge(v_ece, v_ece_students)
 g.add_edge(v_ieee_engi, v_ece_students)
 g.add_edge(v_ieee_engi, v_ieee_pvamu)
+g.add_edge(v_ieee_engi, v_middle_schools)
+g.add_edge(v_ieee_engi, v_high_schools)
+g.add_edge(v_ieee_engi, v_community)
 
 g.add_edge(v_outreach_officer, v_cs)
 g.add_edge(v_outreach_officer, v_tech)
@@ -130,6 +139,7 @@ g.add_edge(v_outreach_officer, v_ieee_tech)
 g.add_edge(v_outreach_officer, v_ece_students)
 g.add_edge(v_outreach_officer, v_ieee_uhcl)
 g.add_edge(v_outreach_officer, v_ieee_pvamu)
+g.add_edge(v_outreach_officer, v_ieee_engi)
 
 g.add_edge(v_ieee_nsm, v_cs)
 g.add_edge(v_ieee_tech, v_tech)
@@ -173,10 +183,10 @@ graph_draw(g, vertex_size=size,
            vertex_text_position=-2,
            vertex_text_color="white",
            edge_text=action,
-           edge_marker_size=30,
+           edge_marker_size=40,
            edge_font_size=30,
            edge_text_color="white",
-           edge_color=np.array([0/3, 98/3, 155/3, 255], dtype=np.float32) / 255,
+           edge_color=np.array([0/2.5, 98/2.5, 155/2.5, 255], dtype=np.float32) / 255,
            bg_color=(0, 0, 0, 1),
            vertex_font_size=30,
            vertex_font_weight=cairo.FONT_WEIGHT_BOLD,
